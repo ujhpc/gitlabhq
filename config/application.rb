@@ -64,7 +64,7 @@ module Gitlab
     #
     # config.relative_url_root = "/gitlab"
 
-    config.middleware.use Rack::Attack
+    # config.middleware.use Rack::Attack
 
     # Allow access to GitLab API from other domains
     config.middleware.use Rack::Cors do
