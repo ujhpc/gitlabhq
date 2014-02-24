@@ -13,10 +13,16 @@
 
 .row
   %section.col-md-9
-    = render "events/event_last_push", event: @last_push
-    = render 'shared/event_filter'
-    .content_list
-    = spinner
+    - readme = @repository.readme
+    - if readme && gitlab_markdown?(readme.name)
+      .file-content.wiki
+        = preserve do
+          = markdown(readme.data)
+    - else
+      = render "events/event_last_push", event: @last_push
+      = render 'shared/event_filter'
+      .content_list
+      = spinner
   %aside.col-md-3.project-side.hidden-sm.hidden-xs
     .clearfix
       - if @project.archived?
