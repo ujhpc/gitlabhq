@@ -109,7 +109,9 @@ class User < ActiveRecord::Base
   # Validations
   #
   validates :name, presence: true
-  validates :email, presence: true, email: {strict_mode: true}, uniqueness: true
+  validates :email, presence: true, email: {strict_mode: true}, uniqueness: true,
+            format: { with: /[@.]uj\.edu\.pl\Z/i, on: :create,
+                      message: "your email must be in 'uj.edu.pl' domain" }
   validates :bio, length: { maximum: 255 }, allow_blank: true
   validates :extern_uid, allow_blank: true, uniqueness: {scope: :provider}
   validates :projects_limit, presence: true, numericality: {greater_than_or_equal_to: 0}
