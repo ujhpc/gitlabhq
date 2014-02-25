@@ -40,6 +40,7 @@
 #= require shortcuts_issueable
 #= require shortcuts_network
 #= require_tree .
+#= stub remark
 
 window.slugify = (text) ->
   text.replace(/[^-a-zA-Z0-9]+/g, '_').toLowerCase()

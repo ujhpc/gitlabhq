@@ -1,6 +1,8 @@
 .btn-group.tree-btn-group
   -# only show edit link for text files
   - if @blob.text?
+    - if gitlab_markdown?(@blob.name)
+      = link_to "slides", project_remark_path(@project, @id), class: "btn btn-small"
     - if allowed_tree_edit?
       = link_to "edit", project_edit_tree_path(@project, @id), class: "btn btn-small"
     - else

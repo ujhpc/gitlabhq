@@ -46,6 +46,7 @@ module Gitlab
     config.assets.paths << Emoji.images_path
     config.assets.precompile << "emoji/*.png"
     config.assets.precompile << "print.css"
+    config.assets.precompile << %w(remark.js remark.css)
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

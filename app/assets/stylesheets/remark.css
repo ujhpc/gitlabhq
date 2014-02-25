@@ -1,0 +1,141 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Serif:400italic|Open+Sans|Archivo+Narrow:700&subset=latin,latin-ext);
+
+body { font-family: "Open Sans"; font-size: 1.2em; }
+h1, h2, h3 {
+  font-family: "Archivo Narrow";
+  font-weight: 700;
+}
+h2, h3 { color: #272822; }
+h4 { color: #666; }
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.4em; }
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.7em 0 0 0;
+}
+.remark-slide-content > h4:first-child,
+.remark-slide-content > h5:first-child,
+.remark-slide-content > h6:first-child {
+  margin: 0 0 1.2em 0;
+}
+em {
+  font-style: italic;
+  font-family: "Noto Serif";
+  font-weight: 400;
+  color: #666;
+}
+.inverse {
+  background: #272822;
+  color: #777872;
+  text-shadow: 0 0 20px #333;
+}
+.inverse h1, .inverse h2 {
+  color: #f3f3f3;
+  line-height: 0.8em;
+}
+.inverse em, .inverse h3, .inverse h4 {
+  color: #c4c7bc;
+}
+.no-bullets ul, .no-bullets li {
+  list-style-type: none;
+}
+pre {
+  border-left: 0.4em solid #d7d7d7;
+}
+p code {
+  font-size: 1.2em;
+  background: #f4f4f4;
+  border: 0.15em solid #eee;
+  padding: 0 0.3em 0.05em 0.3em;
+  color: #666;
+}
+pre code {
+  padding: 0;
+  border: none;
+}
+a {
+  color: #f92672;
+  text-decoration: none;
+}
+.task {
+  float: right;
+  font-size: 0.9em;
+  padding-top: 0.6em;
+}
+.task a {
+  color: #080;
+  text-decoration: none;
+}
+.right {
+  float: right;
+  margin-left: 1em;
+}
+.pushdown {
+  margin-top: 12em;
+}
+.left-column {
+  width: 30%;
+  clear: left;
+  float: left;
+}
+.right-column {
+  width: 68%;
+  clear: right;
+  float: right;
+}
+.clear {
+  clear: both;
+  display: block;
+}
+.footnote {
+  padding-top: 0.2em;
+  border-top: 0.16em solid #ccc;
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  font-size: 0.8em;
+  color: #666;
+}
+.inverse .footnote {
+  color: #777872;
+  border-top: 0.16em solid #474743;
+}
+.full img {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 908px;
+  max-height: 681px;
+}
+.large img {
+  height: 510px;
+}
+.small img {
+  height: 350px;
+}
+.smaller img {
+  height: 226px;
+}
+.tiny img {
+  height: 170px;
+}
+.hljs-type,
+.hljs-class .hljs-title {
+  font-weight: bold;
+  color: #802;
+}
+.hljs-class .hljs-title ~ .hljs-title,
+.hljs-property .hljs-title {
+  color: #666;
+}
+.hljs-default .hljs-string { color: #080; }
+.hljs-default .hljs-number { color: #46b; }
+.hljs-default .hljs-built_in { color: #468; }
+.hljs-default .hljs-variable { color: #808; }
+.hljs-default .hljs-literal {
+  font-weight: bold;
+  color: black;
+}
