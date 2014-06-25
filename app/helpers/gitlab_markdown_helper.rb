@@ -191,4 +191,62 @@ module GitlabMarkdownHelper
   def correct_ref
     @ref ? @ref : "master"
   end
+
+  # Backport of v6 code for Markdown
+  def md_create_relative_links(text)
+    paths = md_extract_paths(text)
+    paths.each do |file_path|
+      original_file_path = md_extract(file_path)
+      new_path = rebuild_path(original_file_path)
+      if md_reference_path?(file_path)
+        # Replacing old string with a new one that contains updated path
+        # eg. [some document]: document.md will be replaced with [some document] /namespace/project/master/blob/document.md
+        text.gsub!(file_path, file_path.gsub(original_file_path, "/#{new_path}"))
+      else
+        # Replacing old string with a new one with brackets ]() to prevent replacing occurence of a word
+        # e.g. If we have a markdown like [test](test) this will replace ](test) and not the word test
+        text.gsub!("](#{file_path})", "](/#{new_path})")
+      end
+    end
+    text
+  end
+
+  def md_extract_paths(markdown_text)
+    all_markdown_paths = md_pick_out_paths(markdown_text)
+    paths = md_remove_empty(all_markdown_paths)
+    md_select_relative(paths)
+  end
+
+  # Split the markdown text to each line and find all paths, this will match anything with - ]("some_text") and [some text]: file.md
+  def md_pick_out_paths(markdown_text)
+    inline_paths = markdown_text.split("\n").map { |text| text.scan(/\]\(([^(]+)\)/) }
+    reference_paths = markdown_text.split("\n").map { |text| text.scan(/\[.*\]:.*/) }
+    inline_paths + reference_paths
+  end
+
+  # Removes any empty result produced by not matching the regexp
+  def md_remove_empty(paths)
+    paths.reject{|l| l.empty? }.flatten
+  end
+
+  # If a path is a reference style link we need to omit ]:
+  def md_extract(path)
+    path.split("]: ").last
+  end
+
+  # Reject any path that contains ignored protocol
+  # eg. reject "https://gitlab.org} but accept "doc/api/README.md"
+  def md_select_relative(paths)
+    paths.reject{|path| ignored_protocols.map{|protocol| path.include?(protocol)}.any?}
+  end
+
+  # Check whether a path is a reference-style link
+  def md_reference_path?(path)
+    path.include?("]: ")
+  end
+
+  # If a path is a reference style link we need to omit ]:
+  def md_extract(path)
+    path.split("]: ").last
+  end
 end
