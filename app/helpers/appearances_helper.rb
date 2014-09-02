@@ -1,6 +1,6 @@
 module AppearancesHelper
   def brand_item
-    nil
+    true
   end
 
   def brand_title
@@ -8,10 +8,10 @@ module AppearancesHelper
   end
 
   def brand_image
-    nil
+    image_tag 'http://www.uj.edu.pl/documents/10172/dc621c84-9202-4f61-9031-89f8cf7f2ba1'
   end
 
   def brand_text
-    nil
+    ''
   end
 end
